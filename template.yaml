@@ -1,0 +1,31 @@
+
+AWSTemplateFormatVersion: '2010-09-09'
+Transform: 'AWS::Serverless-2016-10-31'
+Description: An AWS Lambda application that calls the Lambda API.
+Resources:
+  WebhookFunction:
+    Type: AWS::Serverless::Function
+    Properties:
+      CodeUri: .
+      Handler: main
+      Runtime: go1.x
+      Timeout: 5
+      Policies:
+        - AWSLambdaBasicExecutionRole
+        - AWSLambda_ReadOnlyAccess
+      Events:
+        Webhook:
+          Type: Api
+          Properties:
+            Path: /webhook
+            Method: POST
+        WebhookGet:
+          Type: Api
+          Properties:
+            Path: /webhook
+            Method: GET
+        Metadata:
+          Type: Api
+          Properties:
+              Path: /
+              Method: GET
