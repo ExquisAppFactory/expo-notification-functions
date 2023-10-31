@@ -58,7 +58,7 @@ func EASBuildWebhook(req events.APIGatewayProxyRequest) (events.APIGatewayProxyR
 
 	if data.Platform == "android" && data.Status == "finished" {
 		log.Println("Device: Android and Status: Finished detected")
-		utils.SendSlackNotification(data.Artifacts.BuildUrl)
+		pkg.SendSlackNotification(data.Artifacts.BuildUrl)
 	}
 
 	return events.APIGatewayProxyResponse{

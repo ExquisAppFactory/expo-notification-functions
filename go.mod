@@ -1,4 +1,4 @@
-module main
+module expo-notification-functions
 
 go 1.19
 
